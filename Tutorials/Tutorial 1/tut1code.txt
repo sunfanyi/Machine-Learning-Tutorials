@@ -1,0 +1,63 @@
+np.random.seed(0)
+
+---
+
+from sklearn import datasets
+
+---
+
+X, y = datasets.make_classification(...)
+
+---
+
+X[:, 0] = np.abs(X[:, 0] * 0.5 + 5)
+X[:, 1] = np.abs(X[:, 1] * 30 + 160)
+
+---
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.scatter(X[y == 0, 0], X[y == 0, 1]) 
+
+---
+
+import numpy as np
+
+
+def get_cov(sdx=1., sdy=1., rotangdeg=0.):
+    covar = np.array([[sdx**2, 0], [0, sdy**2]])
+    rot_ang = rotangdeg / 360 * 2 * np.pi
+    rot_mat = #own code here
+
+    covar = np.matmul(np.matmul(rot_mat, covar), rot_mat.T)
+    return covar
+
+---
+
+x1line = np.linspace(-1, 1, 200)
+x2line = np.linspace(-1, 1, 200)
+
+---
+
+x1grid, x2grid = np.meshgrid(x1line, x2line)
+
+---
+
+Xgrid = np.array([x1grid, x2grid]).reshape([2,40000]).T
+
+---
+
+def gen_sample_grid(npx=200, npy=200, limit=1):
+  x1line = np.linspace(-limit, limit, npx)
+  x2line = np.linspace(-limit, limit, npy)
+  x1grid, x2grid = np.meshgrid(x1line, x2line)
+  Xgrid = np.array([x1grid, x2grid]).reshape([2,npx*npy]).T
+  return Xgrid,x1line,x2line
+
+---
+
+p = 1 / (2 * np.pi * np.sqrt(np.linalg.det(covar))) * np.exp(
+    -1 / 2 * (np.matmul(Xgrid, np.linalg.inv(covar)) * Xgrid).sum(-1))
+
+---

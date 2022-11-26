@@ -1,0 +1,40 @@
+fig, ax = plt.subplots() 
+plt.hist(s_scale) 
+plt.show()
+---
+scArray = np.array([[t_mean, s_mean],[t_std, s_std]]) 
+np.savetxt('scaleParams.txt',scArray)
+
+#download it from the Colab interface:
+from google.colab import files 
+files.download('scaleParams.txt')
+---
+loadedScales = np.loadtxt('scaleParams.txt')
+---
+import sys
+if a1.shape != (3, 1):
+  print("Error!! Shape of a1 is incorrect.")
+  sys.exit()
+if Xgrid.shape != (npx*npy, 2):
+  print("Error!! Shape of Xgrid is incorrect.")
+  sys.exit()
+
+#Ygrid is defined as the same as Xgrid, except it has 1  
+#at the beginning - this therefore adds a column of ones to the left 
+Ygrid = np.concatenate([np.ones([npx * npy,1]), Xgrid],axis=1)
+
+#calculate each of the five functions as before 
+g1 = np.matmul(Ygrid,a1) 
+g2 = np.matmul(Ygrid,a2) 
+g3 = np.matmul(Ygrid,a3) 
+g4 = np.matmul(Ygrid,a4) 
+g5 = np.matmul(Ygrid,a5)
+
+#combine all five functions together 
+gconc = np.concatenate([g1, g2, g3, g4, g5],axis=1)
+
+#find which of the values is largest for each row 
+omega=np.argmax(gconc,axis=1)
+
+#put back onto 2D grid so it can easily be plotted 
+omega = np.reshape(omega, [npx, npy]) 

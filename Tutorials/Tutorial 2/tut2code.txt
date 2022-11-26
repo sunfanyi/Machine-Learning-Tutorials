@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots() 
+plt.plot(...)
+---
+clf = GaussianNB()
+clf.fit(X_train, y_train)
+---
+classVals = clf.predict(Xgrid)
+classVals = np.reshape(classVals, [200, 200])
+---
+nTot = len(y_test) 
+nMatch = 0 
+for i in range(len(y_test)):
+	if y_test[i] == y_test_model[i]:
+		nMatch += 1
+
+print(100 * nMatch / nTot)
+---
+probGrid = np.reshape(probVals[:, 0], [200, 200])
