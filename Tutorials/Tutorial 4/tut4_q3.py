@@ -61,8 +61,8 @@ if __name__ == '__main__':
     omega = multi_category_classification_2D(weighting_terms, npx, npy,
                                              Xgrid, Ygrid)
     fig, ax = plt.subplots()
-    ax.contourf(x1grid, x2grid, omega)
-    fig.colorbar(None)
+    contourf_ = ax.contourf(x1grid, x2grid, omega)
+    fig.colorbar(contourf_)
     fig.suptitle('y = (1, x1, x2)\'; 5 classes')
     fig.show()
 
@@ -74,8 +74,8 @@ if __name__ == '__main__':
     omega = multi_category_classification_2D(weighting_terms, npx, npy,
                                              Xgrid, Ygrid)
     fig, ax = plt.subplots()
-    ax.contourf(x1grid, x2grid, omega)
-    fig.colorbar(None)
+    contourf_ = ax.contourf(x1grid, x2grid, omega)
+    fig.colorbar(contourf_)
     fig.suptitle('y = (1, -1*x1, -3*x2)\'; 2 classes')
     fig.show()
 
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     omega = multi_category_classification_2D(weighting_terms, npx, npy,
                                              Xgrid, Ygrid)
     fig, ax = plt.subplots()
-    ax.contourf(x1grid, x2grid, omega)
-    fig.colorbar(None)
+    contourf_ = ax.contourf(x1grid, x2grid, omega)
+    fig.colorbar(contourf_)
     fig.suptitle('y = (1, x1, x2, x1x2)\'; 5 classes')
     fig.show()

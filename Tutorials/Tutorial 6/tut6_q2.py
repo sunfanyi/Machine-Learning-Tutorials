@@ -44,10 +44,10 @@ Z = model.predict(Xgrid)[:, 0].reshape([200, 200])
 # Z = model.predict(Xgrid)[:, 1].reshape([200, 200])
 
 fig, ax = plt.subplots()
-ax.contourf(x1line, x2line, Z)
+contourf_ = ax.contourf(x1line, x2line, Z)
 # Values on colorbar represent the probability of the points of being the
 # corresponding classes
-fig.colorbar(None)
+fig.colorbar(contourf_)
 ax.plot(X[y == 0, 0], X[y == 0, 1], 'rx')
 ax.plot(X[y == 1, 0], X[y == 1, 1], 'gx')
 fig.suptitle('Training data')

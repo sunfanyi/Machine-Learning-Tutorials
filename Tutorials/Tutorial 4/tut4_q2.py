@@ -22,8 +22,8 @@ def linear_discriminant(x1, x2):
     g = np.reshape(g, [n, n])
 
     fig, ax = plt.subplots()
-    ax.contourf(x1grid, x2grid, g)
-    fig.colorbar(None)
+    contourf_ = ax.contourf(x1grid, x2grid, g)
+    fig.colorbar(contourf_)
     fig.show()
     return fig, ax
 
