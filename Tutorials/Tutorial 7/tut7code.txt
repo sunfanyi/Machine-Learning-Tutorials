@@ -1,0 +1,23 @@
+from sklearn.neighbors import KernelDensity
+...
+kde = KernelDensity(kernel='tophat', bandwidth=1).fit(X)
+
+---
+
+x_sample = np.linspace(-5, 5, 1000)
+p = np.exp(kde.score_samples(x_sample.reshape(len(x_sample), -1)))
+
+---
+
+X, y = gen_circular_distribution(200) 
+X1 = X[y == 0, :] 
+X2 = X[y == 1, :]
+
+---
+
+from sklearn.neighbors import KNeighborsClassifier
+...
+near = 1
+neigh = KNeighborsClassifier(n_neighbors=near) 
+neigh.fit(X, y)
+
