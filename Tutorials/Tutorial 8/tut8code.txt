@@ -1,0 +1,76 @@
+from sklearn import datasets
+...
+X, y = datasets.make_classification(n_samples=100, n_features=2, n_informative=2, n_redundant=0)
+
+---
+
+from sklearn import tree
+...
+clf = tree.DecisionTreeClassifier()
+---
+
+from sklearn import ensemble
+
+rf = ensemble.RandomForestClassifier(...)
+
+---
+
+from google.colab import files
+print('Upload window.png here') 
+uploaded = files.upload()
+
+---
+
+import numpy as np
+import matplotlib.pyplot as plt 
+import matplotlib.image as mpimg
+
+#load in the image
+img = mpimg.imread('window.png')
+
+#just extract one channel - technically this is red, but 
+#it doesn't matter since they are all equal
+imgBw = np.squeeze(img[:, :, 0])
+
+#get the size
+npy, npx = imgBw.shape
+
+plt.figure() 
+plt.imshow(imgBw, cmap=plt.cm.gray) 
+plt.axis('off')
+
+---
+
+fim = np.fft.fft2(imgBw)
+
+plt.figure() 
+plt.imshow(np.abs(fim))
+#show the colour scale:
+plt.colorbar()
+#set the colour limits to something so we can see the image better
+plt.clim(0, 1e3) 
+
+---
+
+#make a separate copy of the image to work on:
+fim2 = fim.copy() 
+#set everything in all except the first row to zero
+fim2[1:npy, :] = 0 
+#set everything in the first row to zero except the first 61 points and the last 60
+fim2[0, 61:npx - 60] = 0
+
+---
+
+diffx = np.diff(imgBw, axis=1) 
+diffy = np.diff(imgBw, axis=0)
+
+diffx = diffx[0:npy - 1,:]
+diffy = diffy[:,0:npx - 1]
+
+---
+
+edgeThresh = (edgeIm > t).astype('int')
+
+---
+
+
