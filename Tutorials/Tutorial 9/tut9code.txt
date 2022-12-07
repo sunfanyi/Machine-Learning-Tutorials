@@ -1,0 +1,19 @@
+from sklearn.datasets import make_blobs
+...
+X, y = make_blobs(n_samples=n_samples, centers=6)
+
+---
+
+from sklearn.cluster import KMeans
+...
+km = KMeans(n_clusters=6)
+
+---
+km.cluster_centers_
+---
+km.inertia_
+---
+from sklearn.decomposition import PCA
+...
+pca = PCA(n_components=2)
+pca.fit(X
