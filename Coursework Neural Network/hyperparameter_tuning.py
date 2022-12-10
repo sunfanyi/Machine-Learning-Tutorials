@@ -14,7 +14,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 from tensorflow.python.keras.utils.np_utils import to_categorical
 
-from tools import scale_features, get_accuracy
+from nn_tools import scale_features, get_accuracy
 
 
 # model = Sequential()

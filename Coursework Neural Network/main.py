@@ -12,7 +12,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from sklearn.model_selection import train_test_split
 from tensorflow.python.keras.utils.np_utils import to_categorical
 from tensorflow.keras.models import load_model
-from tools import scale_features, fit_model, get_accuracy
+from nn_tools import scale_features, fit_model, get_accuracy
 
 
 def fit_dataset1():
