@@ -26,6 +26,7 @@ def train_model(X_train, y_train, Xgrid):
     plt.axis('square')
     plt.xlim(-3, 3)
     plt.ylim(-3, 3)
+    plt.title("training data")
     plt.show()
 
     return clf
@@ -50,6 +51,7 @@ def visualise_proba(clf, Xgrid, npx, npy, x1line, x2line):
     probGrid = np.reshape(probVals[:, 0], [npx, npy])
     plt.contourf(x1line, x2line, probGrid)
     plt.axis('square')
+    plt.title("test data")
     plt.show()
 
 

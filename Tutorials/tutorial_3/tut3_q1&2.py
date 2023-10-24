@@ -20,6 +20,8 @@ def fit_linear_reg(xtrain, ytrain, xtest, order):
         b = [np.sum(xtrain*y), np.sum(ytrain)]
 
         beta = np.linalg.solve(A, b)
+        # Alternatively:
+        # beta = np.matmul(np.linalg.inv(A), b)
         y_fitted = beta[0] + xtest * beta[1]
 
     elif order == 2:
@@ -49,8 +51,8 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots()
     ax.scatter(x, y, s=4)
-    plt.plot(xtest, y_fitted_1st, 'k')
-    plt.plot(xtest, y_fitted_2nd, 'r')
-    plt.text(0.5, 100, 'Fanyi Sun', size=20, zorder=0, color='#aaaaaa')
-    plt.savefig('linear_reg')
-    plt.show()
+    ax.plot(xtest, y_fitted_1st, 'k')
+    ax.plot(xtest, y_fitted_2nd, 'r')
+    ax.text(0.5, 100, 'Fanyi Sun', size=20, zorder=0, color='#aaaaaa')
+    fig.savefig('linear_reg')
+    fig.show()

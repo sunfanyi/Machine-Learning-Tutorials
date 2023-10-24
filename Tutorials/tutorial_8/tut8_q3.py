@@ -17,7 +17,7 @@ def show_image_greyscale(img):
     plt.imshow(img, cmap=plt.cm.gray)
     plt.colorbar()
     plt.axis('off')
-    plt.show()
+    # plt.show()
 
 
 def fourier_processing(imgBw):
@@ -31,7 +31,7 @@ def fourier_processing(imgBw):
     plt.colorbar()
     # set the colour limits to something so we can see the image better
     plt.clim(0, 1e3)
-    plt.show()
+    # plt.show()
 
     # make a separate copy of the image to work on:
     fim2 = fim.copy()
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     t = 0.35
     edgeThresh = thresholding(t, edgeIm)
     show_image_greyscale(edgeThresh)
-
+    plt.show()
 
 

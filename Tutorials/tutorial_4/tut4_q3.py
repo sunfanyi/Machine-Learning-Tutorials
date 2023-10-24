@@ -87,6 +87,8 @@ if __name__ == '__main__':
                        [-0.2, 1.5, -1, 0.4]]
     Ygrid = np.concatenate([np.ones([npx * npy, 1]), Xgrid,
                             (Xgrid[:, 0] * Xgrid[:, 1]).reshape(-1, 1)], axis=1)
+    # Ygrid = np.concatenate([np.ones([npx * npy, 1]), Xgrid,
+    #                         np.array([Xgrid[:, 0] * Xgrid[:, 1]]).T], axis=1)
 
     omega = multi_category_classification_2D(weighting_terms, npx, npy,
                                              Xgrid, Ygrid)

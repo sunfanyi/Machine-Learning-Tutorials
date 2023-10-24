@@ -31,7 +31,7 @@ def gen_sample_grid(npx=200, npy=200, limit=1):
 
 
 if __name__ == '__main__':
-    covar = get_cov(sdx=1, sdy=1, rotangdeg=0)
+    covar = get_cov(sdx=1, sdy=.3, rotangdeg=30)
     Xgrid, x1line, x2line = gen_sample_grid(npx=200, npy=200, limit=1)
     p = 1 / (2 * np.pi * np.sqrt(np.linalg.det(covar))) * np.exp(
         -1 / 2 * (np.matmul(Xgrid, np.linalg.inv(covar)) * Xgrid).sum(-1))
